@@ -20,10 +20,10 @@ A imagem utiliza a imagem base `openjdk:11-jre-slim` e configura diversas variá
 
 O Dockerfile instala as seguintes dependências no sistema operacional da imagem:
 
-**curl:** Ferramenta para transferência de dados com sintaxe URL.
-**tzdata:** Informações de fuso horário.
-**net-tools:** Ferramentas de rede.
-**libpq5:** Biblioteca de cliente PostgreSQL.
+- **curl:** Ferramenta para transferência de dados com sintaxe URL.
+- **tzdata:** Informações de fuso horário.
+- **net-tools:** Ferramentas de rede.
+- **libpq5:** Biblioteca de cliente PostgreSQL.
 <br><br>
 
 ### Adição do agente Elastic APM
