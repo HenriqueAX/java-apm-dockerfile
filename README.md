@@ -26,7 +26,7 @@ O Dockerfile instala as seguintes dependências no sistema operacional da imagem
 - **libpq5:** Biblioteca de cliente PostgreSQL.
 <br><br>
 
-### Adição do agente Elastic APM
+### Adição do Elastic APM
 
 O Dockerfile adiciona o Elastic APM Agent (versão 1.18.0.RC1) ao diretório raiz da aplicação. O agente é baixado diretamente do Maven Central Repository.
 <br><br>
