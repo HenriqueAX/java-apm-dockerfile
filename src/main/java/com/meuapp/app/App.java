@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class App {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://10.1.2.34:13306/mydatabase"; // Replace with your database URL
+        String url = "jdbc:mysql://10.1.2.34:13306/mydatabase?useSSL=true&enabledTLSProtocols=TLSv1"; // Replace with your database URL
         String user = "root"; // Replace with your database username
         String password = "root"; // Replace with your database password
 
