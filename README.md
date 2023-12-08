@@ -1,4 +1,4 @@
-# Docker Image para Aplicação Java com TLS 1.0 e Elastic APM
+# Dockerfile para Aplicação Java com TLS 1.0 e Elastic APM
 
 Este repositório contém um Dockerfile para criar uma imagem Docker que executa uma aplicação Java utilizando o OpenJDK 11. Esta imagem é configurada para suportar conexões TLS 1.0 e integra-se com o Elastic APM para monitoramento de desempenho.
 
