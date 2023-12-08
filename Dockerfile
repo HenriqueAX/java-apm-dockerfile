@@ -11,7 +11,6 @@ RUN mvn package
 FROM openjdk:11-jre-slim
 
 ENV TZ=America/Sao_Paulo \
-    APP_FILE=myapp.jar \
     JAVA_OPTS="-Djdk.tls.client.protocols=TLSv1 -Dhttps.protocols=TLSv1"
     ELASTIC_APM_SERVICE_NAME=my-java-app \
     ELASTIC_APM_SERVER_URL=http://apm-server:8200 \
