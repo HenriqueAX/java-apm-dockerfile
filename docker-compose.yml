@@ -1,6 +1,6 @@
 version: '3.8'
 networks:
-  mysql:
+  public:
 
 services:
   mysql-5:
@@ -9,9 +9,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydatabase
-      #MYSQL_TLS_VERSION: "TLSv1"
     ports:
       - "13306:3306"
     networks:
-      - mysql
+      - public
 
