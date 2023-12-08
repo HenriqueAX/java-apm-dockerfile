@@ -27,9 +27,6 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     && rm -rf /var/lib/apt/lists/*
 
-
-COPY mysql/ssl/ /app/ssl/
-
 COPY --from=build /build/target/*.jar /app/bin.jar
 
 ADD https://repo1.maven.org/maven2/co/elastic/apm/elastic-apm-agent/1.18.0.RC1/elastic-apm-agent-1.18.0.RC1.jar /elastic-apm-agent.jar
