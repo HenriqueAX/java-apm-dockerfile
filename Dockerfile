@@ -16,7 +16,7 @@ FROM openjdk:11-jre-slim
 
 ENV TZ=America/Sao_Paulo \
     APP_FILE=myapp.jar \
-    JAVA_OPTS="-Djdk.tls.client.protocols=TLSv1 -Dhttps.protocols=TLSv1 -Dcom.mysql.cj.protocol.TlsProtocol=TLSv1.0"
+    JAVA_OPTS="-Djdk.tls.client.protocols=TLSv1 -Dhttps.protocols=TLSv1 -Dcom.mysql.cj.protocol.TlsProtocol=TLSv1.0 -Djavax.net.ssl.ciphers=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
 #    ELASTIC_APM_SERVICE_NAME=my-java-app \
 #    ELASTIC_APM_SERVER_URL=http://apm-server:8200 \
 #    ELASTIC_APM_SECRET_TOKEN=your_token \
