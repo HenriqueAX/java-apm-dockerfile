@@ -5,11 +5,11 @@ networks:
 services:
   mysql-5:
     image: mysql:5.7
-    container_name: mysql-tls-1.0
+    container_name: mysql-test
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydatabase
-      MYSQL_TLS_VERSION: "TLSv1"
+      #MYSQL_TLS_VERSION: "TLSv1"
     ports:
       - "13306:3306"
     networks:
