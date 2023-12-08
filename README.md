@@ -1,49 +1,39 @@
-Este repositório contém um Dockerfile para criar uma imagem Docker para executar uma aplicação Java utilizando o OpenJDK 11 com o Elastic APM para monitoramento de desempenho.
-<br>
+# Docker Image para Aplicação Java com TLS 1.0 e Elastic APM
+
+Este repositório contém um Dockerfile para criar uma imagem Docker que executa uma aplicação Java utilizando o OpenJDK 11. Esta imagem é configurada para suportar conexões TLS 1.0 e integra-se com o Elastic APM para monitoramento de desempenho.
 
 ## Funcionamento do Dockerfile
 
-### Imagem e variáveis
-A imagem utiliza a imagem base `openjdk:11-jre-slim` e configura diversas variáveis de ambiente para personalizar o ambiente de execução da aplicação:
+### Construção e Execução da Aplicação
 
-- **TZ (TimeZone):** Define o fuso horário para "America/Sao_Paulo".
-- **APP_FILE:** Nome do arquivo JAR da aplicação, configurado como `myapp.jar`.
-- **JAVA_OPTS:** Opções de linha de comando do Java, inicialmente vazias.
-- **ELASTIC_APM_SERVICE_NAME:** Nome do serviço para o Elastic APM, configurado como `my-java-app`.
-- **ELASTIC_APM_SERVER_URL:** URL do servidor Elastic APM, configurado como `http://apm-server:8200`.
-- **ELASTIC_APM_SECRET_TOKEN:** Token secreto para autenticação no servidor Elastic APM, configurado como `your_token`.
-- **ELASTIC_APM_APPLICATION_PACKAGES:** Pacotes da aplicação a serem monitorados pelo Elastic APM, configurados como `org.example`.
-- **ELASTIC_APM_ENVIRONMENT:** Ambiente da aplicação, configurado como `production`.
-<br>
+- **Fase de Construção (Maven):** A primeira fase do Dockerfile utiliza a imagem `maven:3.8.4` para compilar o aplicativo Java. O arquivo `pom.xml` e o código-fonte são copiados para a imagem, e o projeto é compilado.
 
-### Instalação de Dependências
+- **Fase de Execução (OpenJDK):** A segunda fase utiliza a imagem `openjdk:11-jre-slim` para executar o aplicativo compilado.
 
-O Dockerfile instala as seguintes dependências no sistema operacional da imagem:
+### Configurações de Ambiente e Dependências
 
-- **curl:** Ferramenta para transferência de dados com sintaxe URL.
-- **tzdata:** Informações de fuso horário.
-- **net-tools:** Ferramentas de rede.
-- **libpq5:** Biblioteca de cliente PostgreSQL.
-<br><br>
+- **Configurações de Ambiente:**
+  - `TZ`: Define o fuso horário para "America/Sao_Paulo".
+  - `APP_FILE`: Especifica o nome do arquivo JAR da aplicação como `myapp.jar`.
+  - `JAVA_OPTS`: Contém opções da JVM para suportar TLS 1.0.
+  - Configurações do Elastic APM: Inclui informações como nome do serviço, URL do servidor, token secreto, pacotes da aplicação e ambiente.
 
-### Adição do Elastic APM
+- **Instalação de Dependências:**
+  - Ferramentas como `curl`, `tzdata` e `net-tools` são instaladas.
 
-O Dockerfile adiciona o Elastic APM Agent (versão 1.18.0.RC1) ao diretório raiz da aplicação. O agente é baixado diretamente do Maven Central Repository.
-<br><br>
+### Configuração do Elastic APM
 
-### Copiando a Aplicação
+- O agente Elastic APM (versão 1.18.0.RC1) é adicionado ao diretório raiz da aplicação, sendo baixado diretamente do Maven Central Repository.
 
-O arquivo JAR da aplicação é copiado para o diretório `/app` na imagem.
-<br><br>
+### Preparação da Aplicação
 
-### Expondo a Porta 8080
+- Os certificados SSL necessários para a conexão TLS 1.0 são copiados para o diretório `/app/ssl/` dentro da imagem.
+- O arquivo JAR compilado é copiado para o diretório `/app`.
 
-A imagem expõe a porta 8080 para permitir o acesso à aplicação.
-<br><br>
+### Exposição da Porta e Execução
 
-### Comando de Execução Padrão
-
-O comando padrão para executar a imagem é configurado para iniciar a aplicação Java com o Elastic APM Agent. As opções do Java (`JAVA_OPTS`), o agente (`-javaagent:/elastic-apm-agent.jar`), a porta do servidor (`-Dserver.port=8080`), e o arquivo JAR da aplicação são todos configurados dinamicamente.
+- **Porta 8080:** A imagem expõe a porta 8080, que é a porta padrão para aplicações web.
+- **Comando de Execução:** A imagem é configurada para executar a aplicação Java com as opções de TLS 1.0, Elastic APM e outras configurações necessárias.
 
 ```bash
 CMD java ${JAVA_OPTS} -javaagent:/elastic-apm-agent.jar -Dserver.port=8080 -jar ${APP_FILE}
