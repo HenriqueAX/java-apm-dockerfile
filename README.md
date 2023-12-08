@@ -37,7 +37,8 @@ Este repositório contém um Dockerfile para criar uma imagem Docker que executa
 
 ```bash
 CMD java ${JAVA_OPTS} -javaagent:/elastic-apm-agent.jar -Dserver.port=8080 -jar ${APP_FILE}
+```
 
 ## Projeto Java para testes
 
-O projeto também possui uma pequena aplicação em Java para que seja testado o Dockerfile. O que ela faz é basicamente tentar uma conexão com um banco MySQL e em seguida retornar se a conexão foi bem sucedida ou não.
+O repositório também possui uma pequena aplicação em Java para que seja testado o Dockerfile. O que ela faz é basicamente tentar uma conexão com um banco MySQL e em seguida retornar se a conexão foi bem sucedida ou não.
