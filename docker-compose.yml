@@ -9,13 +9,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydatabase
-      #MYSQL_TLS_VERSION: "TLSv1"
     ports:
       - "13306:3306"
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/ssl:/etc/mysql/ssl
-    command: --tls_version=TLSv1 --ssl=1 --ssl-ca=/etc/mysql/ssl/ca.pem --ssl-cert=/etc/mysql/ssl/server-cert.pem --ssl-key=/etc/mysql/ssl/server-key.pem
+    #command: --tls_version=TLSv1 --ssl=1 --ssl-ca=/etc/mysql/ssl/ca.pem --ssl-cert=/etc/mysql/ssl/server-cert.pem --ssl-key=/etc/mysql/ssl/server-key.pem
     networks:
       - public
   
