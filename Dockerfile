@@ -32,5 +32,5 @@ ADD https://repo1.maven.org/maven2/co/elastic/apm/elastic-apm-agent/1.18.0.RC1/e
 
 EXPOSE 8080
 
-CMD java ${JAVA_OPTS} -Dserver.port=8080 -jar bin.jar
+CMD java ${JAVA_OPTS} -javaagent:/elastic-apm-agent.jar -Dserver.port=8080 -jar bin.jar
 
