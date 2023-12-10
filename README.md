@@ -12,14 +12,14 @@ Este repositório contém um Dockerfile para criar uma imagem Docker que executa
 
 ### Configurações de Ambiente e Dependências
 
-- **Configurações de Ambiente:**
+- **Variáveis de Ambiente:**
   - `TZ`: Define o fuso horário para "America/Sao_Paulo".
   - `APP_FILE`: Especifica o nome do arquivo JAR da aplicação como `myapp.jar`.
   - `JAVA_OPTS`: Contém opções da JVM para suportar TLS 1.0.
-  - Configurações do Elastic APM: Inclui informações como nome do serviço, URL do servidor, token secreto, pacotes da aplicação e ambiente.
+  - Variáveis do Elastic APM: Inclui informações como nome do serviço, URL do servidor, token secreto, pacotes da aplicação e ambiente.
 
 - **Instalação de Dependências:**
-  - Ferramentas como `curl`, `tzdata` e `net-tools` são instaladas.
+  - Ferramentas úteis como `curl`, `tzdata` e `net-tools` são instaladas.
 
 ### Configuração do Elastic APM
 
@@ -27,7 +27,6 @@ Este repositório contém um Dockerfile para criar uma imagem Docker que executa
 
 ### Preparação da Aplicação
 
-- Os certificados SSL necessários para a conexão TLS 1.0 são copiados para o diretório `/app/ssl/` dentro da imagem.
 - O arquivo JAR compilado é copiado para o diretório `/app`.
 
 ### Exposição da Porta e Execução
